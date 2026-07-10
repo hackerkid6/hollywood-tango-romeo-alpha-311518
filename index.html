@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>follow audit — instagram reconciliation</title>
+<link rel="apple-touch-icon" href="hollywood-icon.png">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAU4UlEQVR4nO152c5k13XeGvZ0hhr/oeduDi2RNClLcgLEsGHEceJcxBe5CZDXyGVeIG+QJ0iQIFe5CmBAQQDBkAVBHhhZEi2JEkmxu9n9d/9DDWfa48pFdbfIJLIdOABBgF8VCqfq7L322utb0z6F//rfvwdfZCimz1uFvx8UE37eOvy9oNSXDHy++DIGPm988Rn4Mog/Z3zxXehLBj5nfPEZ+DILfc74MgY+b3zJwOeNLz4DCn/FwOFS5O8w7zDpbxj5tw74/4RPMYCQsgCAYvxbFxYAEaH/zf0Q8LB/BBEAEfw7iPp/wEv5n8KLGEAoRW6vLBN8sgnMCABy0AUE8DlNLyaLYiRSIWUQOdwUgFykCGjGIqKYiDnEiPTr9iD4KfJFDjJ+fUAiiEguogifawUIAMQETKAIcilv313cnw/b7RUxFylMyASKkRFyKaUUxaAYUpHfvr/+zWt5mkajWeRgbnn7Vvvbr7UxpUWt/+jrS+k/QSRNoBiY4DCXf/UVASTmkovkUpjgsNynR758KwZGqA3dWDqt+NODSRGoF3vopwwI37hb/9HXT9651SKiYkAARfDqtfnNo1ZEmIBRlGKMncQRAN+40XztlpOSh5DfvG6tDDdWre8uHjx61FQ25QIAiiEXOVCHAIwCAKtG/8HbJ//s7dXXbs+eG4tAEZaDsQ62I1CMRDCFeDq3v3/fTbszpZR6PhiICZlQEWqmfgp3btx89OF77/7oh9+822C4QuTa0B9+7fQ6Pbnfbn7vjSNFxIQxFaMNEwjA3ZOmzpc59E+24XzA+6d2VdMvHjyerW4QyjfuzU9nGgBeP63XjQWQ1nHlrFX4z792+vMff+9b3/72N+42rx2pUoQZAeX28ezu6YIIEUQzIkil6a07R5VzKWfM4wvzIxPSr2giKIDT1D3u1eju+Bgp7HIpb99Z5OHZf/rvf/a9X+xur9TaRQAoIloxQ9YMBNBPUTEbxp8+Ge7fXK+M//Dx5Xp9nGK4vXaNbOeOfveN5c1mgpL/4K1V6R6fzKsSuh8/6vS1rz/ZpaXqUug10++9cfx6uzuWR7//5rq2CgAqQ//07ZPWf6THR87VhoFQfuVCh30woWJKuQDQtZNjRiRSlWGQsmzM4/PNa2/81tG1V2KW0F0QQi7CTISiCDVjylkpdpqebsdIlcF0OZT5rJWSN0PWDHfX7t2/+lFJ/ubK9bvLXz76RGutFN+6eYsQ6soFP41Df+90fuTCf/nWn/7JT69aC3fm4mO6fdRg7P7bd3/0y50CBKcRpagXar9gAEExpJxnTWMop5xyEZLAJOe74Suv3rt+vLx95Bjyw7Oz2plcyqxtFIliVAwxFa2ICQBE6eqDBw9NvTSKNGPn8+mqdbL/ycPL5WJ5e4E/+ejB0bXb22F6uov/5Jv3f+eNE5X2f/qXfzVfLOeOL662Jze/cu/1t6Nw6C+kRK04pnTrzmu2WaUsViFAYX4Z8S9yuUbIgn/8nT/bbvfHt90ff++H5xf7V99wHzzZ7c53b6wamR7/x//6PbP+SmXU6OP7Tz/IKWhmRsxFNDMC/KPXlqV79J13f/zKO/+45GA0b/vpN9+6/Rc/+MsRmtOjY1WGP/n+5ekr91Dyn3+w5+FxDv0Hj86Obr25XszPt91v3Tt+/Z5yjha1/eDBo+b0Nzbd+M6N5Tuv32Gr66qeN9V5Top1KQUA8Fs/ePgyAwtAPwzOGqV0KcJKSU6ItN1trp49mMZhfXr7xo27MUUp5dGDXxyf3Kia+e/cX3z3L/7n5G62dd1fPXr//fduvfrO8cmNFAMgMlHefPjhxx/ffvN3XztSZx+/99FO33v9N4KfmHn0wU9j286sMTH6UmAmm+tLx6z+/AfvXqb2q299c5qm6y0sdHjv/fe1bS6urmY333HWiRQAwP/xw0efLhdEJHLI7CAvihQzIykiLCXHEA4/amNTDER8/sn7m83Va2/9w5KzAGpjQEqK8XmdQtzttop5Pl9cXl6cP3t075U3WKlD6UJEIso5H9ZCpH7oL85+OfT7Zn5075WvphSRKIRw9vgjRF6sTnMKq9WRvKip+O0ff2YD/2e9PFQpQBQRBECilzcQ8FDCiYiIRYqIiGQQeF68X+xfBHJOSilWOnj/NzRJRMSsERFAgp/ghRilDIDknBAw5fSyPv+adlpEQBAQSRErBExpIjKIlJMXEEQ6VHKRoo0GwLG/YNZKO1IGSQFAKUlyEhApCQEVE5ScQmKiz7QMIgICAAgoICA5p3xQjpkOBmTWz9VVFgCUsofOAqR8tp0+6I3EbJC4lBTG/f7iyf7qwf7qoa3m1+7+g/nqDhDlFKQUJFK6HruLRz//zub858yWtVO6cs1qvrrbLK7bakGspZRSkkiBg6ZQXi6ISESKSAFiyQmJEDDnUEo+dIysDBL1m8ch9CXHkmNOIecAIsbNjJvjd//6Ab4AsWLWMYz97mx39XB/9XDYPw2+BxAkPmi8WN+7dvebq+NXWZkUpycfv/vJh9+PoWdlDyYRKYfw0qau2uP56vZ8daeenbC2RAqREPGlB+cU/LQd9s+67ZNu98RVi9XJ/dnqprGzw4Bu++STj75/efYzKfngzQByMMRBY/zF5ZRSnqZQSh66i/MnP7148rOhuyg5IhGRJiIAFBFEEICcPAgs1neOb7z57PFfby9+ycodAuBg0+cvkIPhS8nEytiZsbU2jXUzU82sm0vJ+80n3f7p1F+lOImUF0LQ1Yv56s769LXt5cOnD3+Yc2BlX7Sun3F4EcE//Bf/cr5ov/6NN+7fv769fBjDQPycUwQ4ZKSXfa+IEBEApBSkZCLFSr/ohD8r9+V6CCAgJRUp8Dy/yUtVkA4uRJ/qkKXklHM62IvZfMo6/xcoSI/vv/LmotlenHXMWpv65Ukl54yIilWRIiKIpBSllAREa4eIpZTnnH5K78OUlNPhGgCLZFZGIeaSERARmfnQchLRgakXQgQAiDUrU0ph5hd3AZFEyuHz5VpEjP/hP/+7lEoIGRHy8/Qk4zQCQNvMSimb3WVdzazWox+3u93x0bFiPYxdSqmqXM7J6BoPhx4kBJm83+53J0fHMaVpGhGlqWf7fh9jPF4f55xzzhdXz5pmVrt633fOGG2MYvWy+KTsRcDZZrvfMClnLSL64J11k5+ssYREzCH4cezV47MHlVv248b72NaLytWXm7PtbhfSOGvnIfl9t0fRt2/cutw87frQNKap2g8/fr9tlqNXs3ZBBCmVEGMu8aOPPzheH4col5tnF5sn1rSVVczIREP0V5sr6+j88mnXTTEGXhNAmYJHgnHqFZMIOFtvdpthHJazVYixbdpdt0u5j7EY47r9fr1e7Pa72s02+4tx6vDf/Nt/dbxexIQiWSsVU0g5WKOeXlwCFKN1LpJLssZBoWsnp9M0Tb5nVqWgD1Epa43e7i+ZadvtrFZHq6X3orguZSqlfPW1dx4/fdgP/Z2b986ePZzPVjEPUGjfd8dHJ4rNZruJ2T/45OPFomHicfRN1Uw+XDu+gYDOMaL1YUCQYRqGaUJKz55dKqaj9bIIqFvXb4Xo+2Fz+8bN9z/4GWsZp2Ct9iGWLOMYnNFCuO86a8yDTz4mxSnlpq7HYYgxscbJc9PUIOi9OVotfZqudrtpfILApyen+2EzjMN2fwVPcsnhlz95eOPaGoDaZvn47JN+3IIAMIJIzmUcpkXb7vrdrK3PLh45a6lXox+ZVQyhrvXHD8+unS7rurZG95OXLKpyzfnV5ThNHz78ecy+H3PTupzFGh1Tamo3jL7SehwmZrbG5JymyccYcspNU7FSwYdh9Lv90HVjP05ac2WruqqYKaT9Tz/4kQ/RKL3vNzEWRLnabZ21IfpSinWmqarziy2IgEApRQDatjFGNXV9dn6Zc7LGDOPIrDY7f3K8cNYOw7Tvh/ViTkiqH7tZOyvi+3GvlQJApUizijFPk5/GOE6hctY6k2Pi2vV9YISSpWmquqq22x5ZdvsBEUouRuuqMrt9rxSXLE3rUsh9581a5yy7XU9ErtJFZLvZKqUQCIWM5srNShEmypK2m55Z1bUzWmXCyUelGAFmdTN43/VjitEYPQVfVZZi2k3+0scBBYzW2ihCzqX4EFnx5L3V+vGTy0PKCz7OZlVMpa7tejXf77thHBSzlAICs1kVQgSApnbMDIjTFIvIcj67fnRUOVNVxhmliBGhrpyUknKagmfNdVXHlAWRidfLRQih68dxCsPgibCqTJFSVcYYBQjKaO8DEokAnW8udvu9IkXM224IIRmlu/3knFGKV6vZrRvHR0dza40gbLZdiHk2b5RSB+VylrOn29VqbowGAOu0UoRCwUdndAyRFRnDu74PMbVtZZzZ7gcRsVaDQFUZP8UnT652XRdTLgLbXR9SnM0bY5iItGYA6PsJAbIUpaiqjDXaWj10o9OWYsijD7uu64dRK6oqM0yDsarvJxDp++ns6ZU1KufS1nVd2b73UkpTua7vicgYtV41Jedh8ERkjA4xhRSIcPS+aSuleN/1T59ttFIlS13ZxbzxPoaYBCCEVFVOa9ZapZS1YqXZ+6AUp1QIURs9jrFyVhvd96NVSkQmH4wxgHC+uSIQsVozqRSzUpxzQcS2rUjhofXf7rth9IhQRERgsagX81nIcRg8K5rP60O74KwhRaWUkqWunHOmravgIwCyVrNZHUMuRUqRuqpCSCllVsxMWvHpyYoZ69rWtZ03DSJeXu5LEaWp5GINH44iXTfmDEPvh95PUyTE5WymrNWlgKtYJDMzERaRfTcarWLI1mqiBgBzLhGSNSbnLFKuLvfd4KvKGucKQxJhjQpVEZnGOIy+qqy1mpkuN53WPIxT7RwzxpQeP7msKlNyAYDK2tH7uWqN4Zxgs+ms1fL8sAb7/Wi0skbHEIcpVpWZoheQ2zdPACDlNIyTEpDB+9Jnay0j9+MoAsw4DWE2bxCpcu5qs2dNSonWKoSSchaAo9Usl2KNNkaN3itFJcvkwzBM106X4xRiSk5ro5VSLEVSTkXQGL1azgRKzlJyTjkzU4a467yfvGKOIQEiESrFxFQ5e3mx1Vo5p/f70RoGwKvtzhjFrFLJFFMhIGvMNPl93xEiM1pj1uvlZjd4H1JOuWRFVFXm8mpPRNaY49XCGh1Cena52XadUSr6NI6eBF65e10ptlYpIgFAAiK8fnIkAiIQQ1ot27Z1KaX5rNFG55xTzN1+QKRZW+VcQoiM6JyurI4xVrWNqQyDX63auq4ASWv2Pm42fQxJVdYmzsSEjIhYsoQQPUQAOF7PfYjj5I0xRNT302zmECHF0o9jP07WaiLMMXsMIcSun5aLJsRYpDARKvRT0FanmEfv28aB4DCOm92ema0zIaV+OzFhzrJctTGkcYwh5sW8CiGWIn03OmdWizlKl0qqrLVGx3CFiEpxiEkA1TBNRqt91xujr676o9W8Wtjttn+63batQwDFrEnVbbXd77fbwRq12w2nJ6u2aXb7zodICMTUztqmqZWmnEvfTYQ09KPSbJwxVk3BD4NXRKcn64ePnxJR0zgUWS7qnGU5n3V9v9v2scisqYiIWOVcpik5a4ZhEpS+81oNgyJmAsR+8ETUNrVazmaX2+1iNiuS69r4ELSp6tqKCDN5n+bz1nt/cXkFSHXtjOa2qYOPIsKKVSlMlHLJMSGADxJTDiHdvXU9LOLkfUyJmaCgiCxWbT+OSnFTO6v1OHmtTMrTOHlims3bzaZbzJspeK05pbxY1kqpfTdWzi7mjVJcSiEm7yMi5JT33UDPLjY5lX3fxZQVK2tUN4x9P50cL5Xi+ayKMWmlT47Wxqi2tm1dTz5su64fJqUIQSrnNHOOualdVRlAUIxX283kfVtXYYqllLapKmdizNttdziTdf0AiIrZ+3i12eVcjOWmtSGFGJKfAjOJwHbXW6uGYcyliAgSlCxOa2OU0dz3k6qcGX1gpNrZR5fndWNnbR103Oz2xpjGuafnV5Vz07gbfHDWTFPY7ruqtjkXq/Uu9pdXG2N0zMn7CCTMxGhKkWnsp3FSCo1WKSdtlEhZr+feRyBUWg2jDyETEStCJM2aORASIiBhmEIRsOaQ5Y3Repw8EQWfipQYc8nlxrW1Ovw7kkF2+2E+q0Vks+2sMYiYc77YbgGBGRF5YZtxmIi5aR0jgUjXT+MYrp2ukVCHMHkvgDmXprYpl2GKs0YB4eSjFClSUkxVVWnNuZSY8mxWnZ/vjVFt67p+PKTOfTeCADFqY0oBwaIUIwITxilWTTWbV30/KVZCxRpDSGCsyTHHFAGFmeZtq5UqRaRIDCn41A2T1mbfjUBUpMzaWorEmIzlxbJViglxHINiNWuqtnbeP2+2tVHDMJUi1hpmEsBDcU0phZAUqbZxWvM0RQCZvO/7iRDmsyql1I1jKmm7HRBgGtPo42o9R4Bx9CWlWeOYSYpQikmzbpqKEEspwxTapiJGpMNTf8VMIhJTijHt96PWahpD01YIsN+OIaTLzXby3oc4hbjd96Vka23KxVoVYqprV9c2xpBSqWtHREopEahrW0Ss09ooZiLCFBMCMnOI5drx0aytc86LRS0Aq2XrnJl8tFaXlFmry+2+iHTTqIho8pP3cbPtb986ZsyPHj8FRGtUXblSSlO7zXYfU3LOhJA2m44QXW2zCAIu583ofUrl+un68dnl4blLVXHJZegnbbSz2ioTKTJJCFGkIOAw+Ka2ZE1KknxSRqWUq8rkVHb70VU6xVikGK0JcRimoRur2uWchjEro0uWtrXeBwCg2lXRR+/jtZOVYjVfNIcHQkoxAOSSh3FKKUspUiSlLALOWQZ2xhLh+cUmxSQgXT9oRYqp5OJ9dE65yihFzHR+ufEhzWYVExORs0YrRuJpCgJAhEycs+x2ozX25Ghecjm/3GmtBQQJnTNV7erKLeYzo3RMyRjV1lUpstv1NPmQRY6O5/3oU84IuFjU69V8Pmu6fhABxXRyvNJarVfzurZt6+aLSlCMVcaqunJaawLUSlmrDy4xDB6AnbVDP52dbQREK1asjo/mUmC775vGxRCmKR4tFtrqpnZH61nl9DD0yrDWarlsCcEZgwjD4HMp+74fxhEQjFaAEEKcz5rlsv1fxC4EOXwXvPoAAAAASUVORK5CYII=">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="follow audit">
+<meta name="theme-color" content="#0f1319">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+  :root {
+    --paper: #0f1319;
+    --card: #171d26;
+    --ink: #e8ecf2;
+    --ink-soft: #8b96a8;
+    --line: #2a3342;
+    --red: #ff4d6f;
+    --red-soft: #2a1720;
+    --green: #2dd48f;
+    --green-soft: #12281f;
+    --blue: #5b7cff;
+    --blue-soft: #1a2138;
+    --amber: #e5a83b;
+    --amber-soft: #2a2314;
+    --radius: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 28px 18px 80px; }
+
+  header { margin-bottom: 26px; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(30px, 6vw, 40px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  h1 .accent { color: var(--red); }
+  .sub { color: var(--ink-soft); margin-top: 10px; max-width: 52ch; }
+
+  /* zip drop zone */
+  .zipdrop {
+    background: var(--card);
+    border: 1.5px dashed var(--line);
+    border-radius: var(--radius);
+    padding: 28px 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+    position: relative;
+    margin-bottom: 12px;
+  }
+  .zipdrop:hover, .zipdrop.dragover { border-color: var(--blue); background: var(--blue-soft); }
+  .zipdrop.loaded { border-style: solid; border-color: var(--green); background: var(--green-soft); }
+  .zipdrop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
+  .zipdrop .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+  .zipdrop .hint { font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; }
+  .zipdrop .choose {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 11px 22px;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--paper);
+    pointer-events: none;
+  }
+  .zipdrop.loaded .choose { display: none; }
+  .zipdrop .loadedmsg {
+    display: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--green);
+    margin-top: 8px;
+  }
+  .zipdrop.loaded .loadedmsg { display: block; }
+  .zipdrop.loaded .hint { display: none; }
+  .zipdrop .spinner {
+    display: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--blue);
+    margin-top: 8px;
+  }
+  .zipdrop.busy .spinner { display: block; }
+  .zipdrop.busy .choose { display: none; }
+
+  .altrow { text-align: center; margin-bottom: 8px; }
+  .alt-toggle {
+    background: none;
+    border: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .drops { display: none; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+  .drops.show { display: grid; }
+  @media (max-width: 560px) { .drops.show { grid-template-columns: 1fr; } }
+  .drop {
+    background: var(--card);
+    border: 1.5px dashed var(--line);
+    border-radius: var(--radius);
+    padding: 18px 14px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+  }
+  .drop:hover { border-color: var(--blue); }
+  .drop.loaded { border-style: solid; border-color: var(--green); background: var(--green-soft); }
+  .drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
+  .drop .label { font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 700; }
+  .drop .hint { font-size: 12px; color: var(--ink-soft); margin-top: 3px; }
+  .drop .choose {
+    display: inline-block; margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700;
+    padding: 8px 14px; border-radius: 999px; background: var(--ink); color: var(--paper);
+    pointer-events: none;
+  }
+  .drop.loaded .choose, .drop.loaded .hint { display: none; }
+  .drop .count { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; margin-top: 4px; display: none; }
+  .drop.loaded .count { display: block; }
+
+  /* ghost callout */
+  .ghost {
+    display: none;
+    background: var(--amber-soft);
+    border: 1px solid #4a3d1e;
+    border-radius: 10px;
+    padding: 12px 14px;
+    font-size: 13px;
+    color: var(--amber);
+    margin-bottom: 26px;
+  }
+  .ghost.show { display: block; }
+  .ghost b { font-family: 'Space Grotesk', sans-serif; }
+
+  /* reconciliation bar */
+  .recon { display: none; margin-bottom: 26px; }
+  .recon.show { display: block; }
+  .recon-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .bar { display: flex; height: 34px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); }
+  .bar .seg-mutual { background: var(--green); }
+  .bar .seg-nonf { background: var(--red); }
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 10px; }
+  .legend .item { display: flex; align-items: center; gap: 7px; font-size: 13px; }
+  .legend .swatch { width: 11px; height: 11px; border-radius: 3px; }
+  .legend b { font-family: 'Space Grotesk', sans-serif; font-size: 15px; }
+
+  .stats { display: none; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 26px; }
+  .stats.show { display: grid; }
+  @media (max-width: 560px) { .stats.show { grid-template-columns: 1fr 1fr; } }
+  .stat { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; }
+  .stat .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.08em; color: var(--ink-soft);
+  }
+  .stat .v { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; margin-top: 2px; }
+  .stat.red .v { color: var(--red); }
+  .stat.green .v { color: var(--green); }
+  .stat.amber .v { color: var(--amber); }
+
+  .results { display: none; }
+  .results.show { display: block; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+  .tab {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500;
+    padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line);
+    background: var(--card); color: var(--ink-soft); cursor: pointer;
+  }
+  .tab.active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+  .toolbar { display: flex; gap: 8px; margin-bottom: 12px; }
+  .search {
+    flex: 1; font-family: 'Inter', sans-serif; font-size: 14px;
+    padding: 10px 14px; border-radius: 10px; border: 1px solid var(--line);
+    background: var(--card); color: var(--ink); outline: none; min-width: 0;
+  }
+  .search::placeholder { color: var(--ink-soft); }
+  .search:focus { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-soft); }
+  .btn {
+    font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: 700;
+    padding: 10px 14px; border-radius: 10px; border: 1px solid var(--line);
+    background: var(--card); color: var(--ink); cursor: pointer; white-space: nowrap;
+  }
+  .btn:hover { border-color: var(--ink); }
+  .btn:focus-visible, .tab:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+  .tabnote { display: none; font-size: 12.5px; color: var(--ink-soft); margin-bottom: 10px; }
+  .tabnote.show { display: block; }
+
+  .list { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+  .row {
+    display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+    border-bottom: 1px solid var(--line); text-decoration: none; color: inherit;
+  }
+  .row:last-child { border-bottom: none; }
+  .row:hover { background: var(--blue-soft); }
+  .row .idx { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-soft); width: 38px; flex-shrink: 0; }
+  .row .handle {
+    font-family: 'JetBrains Mono', monospace; font-size: 13.5px; font-weight: 500;
+    flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .row .since { font-size: 11.5px; color: var(--ink-soft); flex-shrink: 0; }
+  .row .arrow { color: var(--ink-soft); flex-shrink: 0; font-size: 13px; }
+  .empty { padding: 32px 16px; text-align: center; color: var(--ink-soft); font-size: 13.5px; }
+
+  .toast {
+    position: fixed; bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--ink); color: var(--paper);
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 10px 18px; border-radius: 999px;
+    transition: transform .25s ease; z-index: 50;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">instagram · follower reconciliation</div>
+    <h1>follow audit<span class="accent">.</span></h1>
+    <p class="sub">tap below and pick the whole .zip instagram gave you — no unzipping needed. everything runs on your device; nothing is uploaded.</p>
+  </header>
+
+  <div class="zipdrop" id="zipdrop">
+    <input type="file" id="zipfile" accept=".zip,application/zip" aria-label="upload instagram export zip">
+    <div class="label">instagram export</div>
+    <div class="hint">instagram-yourname-date.zip</div>
+    <div class="choose">＋ choose .zip file</div>
+    <div class="spinner">reading zip…</div>
+    <div class="loadedmsg" id="zipmsg">✓ loaded</div>
+  </div>
+
+  <div class="altrow"><button class="alt-toggle" id="altToggle">or pick the json files individually</button></div>
+
+  <div class="drops" id="drops">
+    <div class="drop" id="dropFollowers">
+      <input type="file" id="fileFollowers" accept=".json" multiple aria-label="upload followers json files">
+      <div class="label">followers</div>
+      <div class="hint">followers_1.json — select all parts if split</div>
+      <div class="choose">＋ choose file(s)</div>
+      <div class="count" id="countFollowers">0</div>
+    </div>
+    <div class="drop" id="dropFollowing">
+      <input type="file" id="fileFollowing" accept=".json" aria-label="upload following json file">
+      <div class="label">following</div>
+      <div class="hint">following.json</div>
+      <div class="choose">＋ choose file</div>
+      <div class="count" id="countFollowing">0</div>
+    </div>
+  </div>
+
+  <div class="ghost" id="ghost"></div>
+
+  <div class="recon" id="recon">
+    <div class="recon-title">reconciliation — accounts you follow</div>
+    <div class="bar" role="img" aria-label="breakdown of following into mutuals and non-followers">
+      <div class="seg-mutual" id="segMutual"></div>
+      <div class="seg-nonf" id="segNonf"></div>
+    </div>
+    <div class="legend">
+      <div class="item"><span class="swatch" style="background:var(--green)"></span> follows you back <b id="legMutual">0</b></div>
+      <div class="item"><span class="swatch" style="background:var(--red)"></span> doesn't follow back <b id="legNonf">0</b></div>
+    </div>
+  </div>
+
+  <div class="stats" id="stats">
+    <div class="stat red"><div class="k">not following back</div><div class="v" id="stNonf">0</div></div>
+    <div class="stat green"><div class="k">mutuals</div><div class="v" id="stMutual">0</div></div>
+    <div class="stat"><div class="k">fans</div><div class="v" id="stFans">0</div></div>
+    <div class="stat amber"><div class="k">pending requests</div><div class="v" id="stPending">0</div></div>
+  </div>
+
+  <div class="results" id="results">
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="nonf" role="tab">don't follow back</button>
+      <button class="tab" data-tab="fans" role="tab">fans</button>
+      <button class="tab" data-tab="mutual" role="tab">mutuals</button>
+      <button class="tab" data-tab="pending" role="tab">pending</button>
+    </div>
+    <div class="tabnote" id="tabnote"></div>
+    <div class="toolbar">
+      <input class="search" id="search" type="search" placeholder="filter usernames…" aria-label="filter usernames">
+      <button class="btn" id="copyBtn">copy</button>
+      <button class="btn" id="csvBtn">csv</button>
+    </div>
+    <div class="list" id="list"></div>
+  </div>
+</div>
+<div class="toast" id="toast">copied</div>
+
+<script>
+(function() {
+  let followers = new Map();   // username -> timestamp
+  let following = new Map();
+  let pending = new Map();
+  let currentTab = 'nonf';
+  let currentData = [];
+
+  const $ = id => document.getElementById(id);
+
+  const TAB_NOTES = {
+    nonf: 'accounts you follow that don\u2019t follow you. deactivated/deleted accounts appear here too \u2014 tapping one shows \u201cuser not found.\u201d unfollowing those still cleans up your count.',
+    fans: 'people who follow you that you don\u2019t follow back.',
+    mutual: '',
+    pending: 'private accounts you requested to follow that never accepted. cancel old ones: open the profile \u2192 tap \u201crequested.\u201d'
+  };
+
+  // standard format: { relationships_x: [ { title, string_list_data: [{value?, href, timestamp}] } ] } or bare array
+  function parseStandard(json) {
+    let arr = null;
+    if (Array.isArray(json)) arr = json;
+    else if (json && typeof json === 'object') {
+      for (const k of Object.keys(json)) {
+        if (Array.isArray(json[k])) { arr = json[k]; break; }
+      }
+    }
+    if (!arr) return [];
+    const out = [];
+    for (const item of arr) {
+      if (!item) continue;
+      const sld = item.string_list_data;
+      if (Array.isArray(sld) && sld.length) {
+        for (const s of sld) {
+          let name = (s.value || '').trim();
+          if (!name && s.href) name = s.href.replace(/\/+$/,'').split('/').pop();
+          if (!name && item.title) name = String(item.title).trim();
+          if (name) out.push({ name: name.toLowerCase(), ts: s.timestamp || null });
+        }
+      } else if (item.title) {
+        out.push({ name: String(item.title).trim().toLowerCase(), ts: item.timestamp || null });
+      }
+    }
+    return out;
+  }
+
+  // pending format: [ { timestamp, label_values: [{label: "Username", value}] } ]
+  function parsePending(json) {
+    if (!Array.isArray(json)) return parseStandard(json);
+    const out = [];
+    for (const item of json) {
+      if (!item) continue;
+      if (Array.isArray(item.label_values)) {
+        for (const lv of item.label_values) {
+          if (lv.label === 'Username' && lv.value) {
+            out.push({ name: String(lv.value).trim().toLowerCase(), ts: item.timestamp || null });
+          }
+        }
+      } else if (item.string_list_data) {
+        for (const e of parseStandard([item])) out.push(e);
+      }
+    }
+    return out;
+  }
+
+  function toMap(entries) {
+    const m = new Map();
+    for (const e of entries) m.set(e.name, e.ts);
+    return m;
+  }
+
+  // zip handling
+  const zipdrop = $('zipdrop'), zipinput = $('zipfile');
+
+  async function handleZip(file) {
+    zipdrop.classList.add('busy');
+    try {
+      const zip = await JSZip.loadAsync(file);
+      const paths = Object.keys(zip.files);
+      const find = (pattern) => paths.filter(p => pattern.test(p) && !zip.files[p].dir);
+
+      const followerFiles = find(/followers_and_following\/followers(_\d+)?\.json$/i);
+      const followingFile = find(/followers_and_following\/following\.json$/i)[0];
+      const pendingFile = find(/followers_and_following\/pending_follow_requests\.json$/i)[0];
+
+      if (!followerFiles.length || !followingFile) {
+        throw new Error('couldn\u2019t find followers/following json inside this zip. make sure you exported in json format (not html) and included \u201cfollowers and following.\u201d');
+      }
+
+      const fEntries = [];
+      for (const p of followerFiles) {
+        const json = JSON.parse(await zip.files[p].async('text'));
+        fEntries.push(...parseStandard(json));
+      }
+      followers = toMap(fEntries);
+      following = toMap(parseStandard(JSON.parse(await zip.files[followingFile].async('text'))));
+      pending = pendingFile ? toMap(parsePending(JSON.parse(await zip.files[pendingFile].async('text')))) : new Map();
+
+      zipdrop.classList.remove('busy');
+      zipdrop.classList.add('loaded');
+      $('zipmsg').textContent = '\u2713 ' + followers.size.toLocaleString() + ' followers \u00b7 ' + following.size.toLocaleString() + ' following';
+      recompute();
+    } catch (err) {
+      zipdrop.classList.remove('busy');
+      alert(err.message || 'could not read that zip file.');
+    }
+  }
+
+  zipinput.addEventListener('change', () => { if (zipinput.files.length) handleZip(zipinput.files[0]); });
+  ['dragover','dragenter'].forEach(ev => zipdrop.addEventListener(ev, e => { e.preventDefault(); zipdrop.classList.add('dragover'); }));
+  ['dragleave','drop'].forEach(ev => zipdrop.addEventListener(ev, e => { e.preventDefault(); zipdrop.classList.remove('dragover'); }));
+  zipdrop.addEventListener('drop', e => { if (e.dataTransfer.files.length) handleZip(e.dataTransfer.files[0]); });
+
+  // individual file fallback
+  $('altToggle').addEventListener('click', () => $('drops').classList.toggle('show'));
+
+  async function readJsonFiles(fileList, parser) {
+    const entries = [];
+    for (const f of fileList) {
+      const text = await f.text();
+      let json;
+      try { json = JSON.parse(text); }
+      catch { throw new Error(f.name + ' is not valid json. choose json format (not html) in the export.'); }
+      entries.push(...parser(json));
+    }
+    return toMap(entries);
+  }
+
+  function setupDrop(dropId, inputId, countId, onLoad) {
+    const drop = $(dropId), input = $(inputId), count = $(countId);
+    input.addEventListener('change', async () => {
+      if (!input.files.length) return;
+      try {
+        const map = await readJsonFiles(input.files, parseStandard);
+        if (!map.size) { alert('no usernames found in that file.'); return; }
+        onLoad(map);
+        drop.classList.add('loaded');
+        count.textContent = map.size.toLocaleString();
+        recompute();
+      } catch (err) { alert(err.message); }
+    });
+  }
+  setupDrop('dropFollowers', 'fileFollowers', 'countFollowers', m => followers = m);
+  setupDrop('dropFollowing', 'fileFollowing', 'countFollowing', m => following = m);
+
+  // compute
+  function recompute() {
+    if (!followers.size || !following.size) return;
+
+    const nonf = [], mutual = [], fans = [], pend = [];
+    for (const [name, ts] of following) {
+      if (followers.has(name)) mutual.push({ name, ts });
+      else nonf.push({ name, ts });
+    }
+    for (const [name, ts] of followers) {
+      if (!following.has(name)) fans.push({ name, ts });
+    }
+    for (const [name, ts] of pending) pend.push({ name, ts });
+
+    const byName = (a,b) => a.name.localeCompare(b.name);
+    nonf.sort(byName); mutual.sort(byName); fans.sort(byName); pend.sort(byName);
+
+    window.__audit = { nonf, mutual, fans, pending: pend };
+
+    $('segMutual').style.flex = mutual.length;
+    $('segNonf').style.flex = nonf.length;
+    $('legMutual').textContent = mutual.length.toLocaleString();
+    $('legNonf').textContent = nonf.length.toLocaleString();
+    $('stNonf').textContent = nonf.length.toLocaleString();
+    $('stMutual').textContent = mutual.length.toLocaleString();
+    $('stFans').textContent = fans.length.toLocaleString();
+    $('stPending').textContent = pend.length.toLocaleString();
+
+    const g = $('ghost');
+    g.innerHTML = '<b>heads up on the numbers:</b> the export counts every account, including deactivated and deleted ones \u2014 so totals here can run higher than what the instagram app shows. those ghost accounts land in \u201cdon\u2019t follow back\u201d and show \u201cuser not found\u201d when tapped.';
+    g.classList.add('show');
+
+    $('recon').classList.add('show');
+    $('stats').classList.add('show');
+    $('results').classList.add('show');
+    renderList();
+  }
+
+  // render
+  function renderList() {
+    const data = window.__audit ? window.__audit[currentTab] : [];
+    const q = $('search').value.trim().toLowerCase();
+    currentData = q ? data.filter(d => d.name.includes(q)) : data;
+
+    const note = $('tabnote');
+    if (TAB_NOTES[currentTab]) { note.textContent = TAB_NOTES[currentTab]; note.classList.add('show'); }
+    else note.classList.remove('show');
+
+    const list = $('list');
+    if (!currentData.length) {
+      list.innerHTML = '<div class="empty">' + (q ? 'no usernames match your filter.' : 'nothing here \u2014 clean slate.') + '</div>';
+      return;
+    }
+    const frag = document.createDocumentFragment();
+    currentData.forEach((d, i) => {
+      const a = document.createElement('a');
+      a.className = 'row';
+      a.href = 'https://www.instagram.com/' + encodeURIComponent(d.name) + '/';
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      const since = d.ts ? new Date(d.ts * 1000).toLocaleDateString(undefined, { month: 'short', year: 'numeric' }).toLowerCase() : '';
+      const sinceLabel = currentTab === 'pending' ? 'requested ' : 'since ';
+      a.innerHTML = '<span class="idx">' + String(i + 1).padStart(3, '0') + '</span>' +
+        '<span class="handle">@' + d.name + '</span>' +
+        (since ? '<span class="since">' + sinceLabel + since + '</span>' : '') +
+        '<span class="arrow">\u2197</span>';
+      frag.appendChild(a);
+    });
+    list.innerHTML = '';
+    list.appendChild(frag);
+  }
+
+  document.querySelectorAll('.tab').forEach(t => t.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    currentTab = t.dataset.tab;
+    renderList();
+  }));
+
+  $('search').addEventListener('input', renderList);
+
+  $('copyBtn').addEventListener('click', async () => {
+    const text = currentData.map(d => '@' + d.name).join('\n');
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast('copied ' + currentData.length + ' usernames');
+    } catch { showToast('copy failed \u2014 try csv instead'); }
+  });
+
+  $('csvBtn').addEventListener('click', () => {
+    const rows = ['username,profile_url,date'];
+    for (const d of currentData) {
+      const dt = d.ts ? new Date(d.ts * 1000).toISOString().slice(0,10) : '';
+      rows.push(d.name + ',https://www.instagram.com/' + d.name + '/,' + dt);
+    }
+    const blob = new Blob([rows.join('\n')], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'follow-audit-' + currentTab + '.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('csv downloaded');
+  });
+
+  let toastTimer;
+  function showToast(msg) {
+    const t = $('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+  }
+})();
+</script>
+</body>
+</html>
